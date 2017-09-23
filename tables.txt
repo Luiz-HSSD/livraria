@@ -1,0 +1,45 @@
+/*
+drop SEQUENCE liv;
+drop SEQUENCE cat;
+drop SEQUENCE liv_cat;
+drop SEQUENCE sub_cat;
+drop table sub_cat_livro;
+drop table livro;
+drop table sub_categoria;
+drop table categoria;
+*/
+CREATE SEQUENCE aa START WITH 1;
+CREATE SEQUENCE aa START WITH 1;
+CREATE SEQUENCE aa START WITH 1;
+CREATE SEQUENCE aa START WITH 1;
+
+create table categoria(
+    cat_id Number(13) PRIMARY KEY,
+    ativo char(1),
+    nome varchar(60)
+);
+create table sub_categoria(
+    sub_cat_id Number(13) PRIMARY KEY,
+    ativo char(1),
+    nome varchar(60),
+    cat_id Number(13),
+    CONSTRAINT fk_cat FOREIGN KEY (cat_id) REFERENCES categoria(cat_id)  
+    
+);  
+
+create table livro(
+    livro_id Number(13) PRIMARY KEY,
+    ativo char(1),
+    nome varchar2(60),
+    n_pags NUMBER(5),
+    isbn char(10),
+    descrição text
+);
+create table sub_cat_livro(
+    livro_id Number(13) ,
+    sub_cat_id Number(13),
+    ativo char(1),
+    n_pags NUMBER(5),
+    CONSTRAINT fk_liv FOREIGN KEY (livro_id) REFERENCES livro(livro_id),
+    CONSTRAINT fk_liv FOREIGN KEY (sub_cat_id) REFERENCES livro(sub_categoria)
+);
