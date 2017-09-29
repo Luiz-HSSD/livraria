@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Produto:EntidadeDominio
+    public class Sub_Categoria:EntidadeDominio
     {
         private string nome;
 
@@ -16,19 +16,18 @@ namespace Dominio
             set { nome = value; }
         }
 
-        private Formato formato;
+        private Categoria categoria;
 
-        public Formato Formato
+        public Categoria Categoria
         {
-            get { return formato; }
-            set { formato = value; }
+            get { return categoria; }
+            set { categoria = value; }
         }
 
-        public Produto()
+        public Sub_Categoria()
         {
             nome = "";
-            formato = new Formato();
+            categoria = new Categoria();
         }
-
     }
 }

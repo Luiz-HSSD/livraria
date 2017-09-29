@@ -49,8 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autor.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Endereco.cs" />
     <Compile Include="EntidadeDominio.cs" />
+    <Compile Include="Formato.cs" />
     <Compile Include="Fornecedor.cs" />
     <Compile Include="IEntidade.cs" />
     <Compile Include="Livro.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Pessoa_Juridica.cs" />
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sub_Categoria.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

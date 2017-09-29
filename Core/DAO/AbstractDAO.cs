@@ -17,7 +17,7 @@ namespace Core.DAO
     public abstract class AbstractDAO:IDAO
     {
         protected OracleDataReader vai;
-        protected OracleConnection connection=Conexao.getConnection();
+        protected OracleConnection connection=Conexao.GetConnection();
         protected string table;
         protected string id_table;
         protected bool ctrlTransaction = true;
@@ -25,7 +25,7 @@ namespace Core.DAO
         protected OracleParameter[] parameters;
         
 
-        protected AbstractDAO(string table, string id_table)
+        public AbstractDAO(string table, string id_table)
         {
             this.table = table;
             this.id_table = id_table;
@@ -71,7 +71,7 @@ namespace Core.DAO
             {
 
                 if (connection == null )
-                    connection = Conexao.getConnection();
+                    connection = Conexao.GetConnection();
             }
             catch 
             {

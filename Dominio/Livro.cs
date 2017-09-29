@@ -61,6 +61,21 @@ namespace Dominio
             get { return preco_medio_compra; }
             set { preco_medio_compra = value; }
         }
+        private List<Sub_Categoria> sub_categorias; 
+
+        public List<Sub_Categoria> Sub_categorias
+        {
+            get { return sub_categorias; }
+            set { sub_categorias = value; }
+        }
+        private string editora;
+
+        public string Editora
+        {
+            get { return editora; }
+            set { editora = value; }
+        }
+
 
 
         public Livro()
@@ -68,11 +83,12 @@ namespace Dominio
             isbn = "";
             n_pags = 0;
             autores = new List<Autor>();
+            sub_categorias = new List<Sub_Categoria>();
             ano = 0;
             descricao = "";
             qtd = 0;
             preco_medio_compra = 0;
-            
+            editora = "";    
         }
     }
 }

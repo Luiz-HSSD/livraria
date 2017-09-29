@@ -33,6 +33,8 @@ namespace Core.Negocio
                     sb.Append("há caractere especial no nome\n");
 
             }
+            if (String.IsNullOrEmpty(sb.ToString()))
+                return null;
             return sb.ToString().Substring(0, sb.ToString().Length - 1);
         }
     }

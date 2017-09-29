@@ -36,19 +36,24 @@ namespace Core.Controle
             
             Parametro_excluir para_ex = new Parametro_excluir();
             ValidarCNPJ val_cnpj = new ValidarCNPJ();
+            Controle_Autor aut = new Controle_Autor();
+            Controle_Formato form = new Controle_Formato();
             Validar_Nome validar_Nome = new Validar_Nome();
+            Validar_Livro validar_Livro = new Validar_Livro();
             LivroDAO livroDAO = new LivroDAO();
             WS_cep_json cep_Json = new WS_cep_json();
             daos.Add(typeof(Livro).Name, livroDAO);
             List<IStrategy> rnsSalvarLivro = new List<IStrategy>()
             {
-                validar_Nome,
-                val_cnpj
+                validar_Livro,
+                aut,
+                form
             };
             List<IStrategy> rnsAlterarLivro = new List<IStrategy>()
             {
-                validar_Nome,
-                val_cnpj
+                validar_Livro,
+                aut,
+                form
             };
             List<IStrategy> rnsExcluirLivro = new List<IStrategy>
             {
@@ -115,6 +120,30 @@ namespace Core.Controle
                 { "CONSULTAR", rnsConsultarEndereco }
             };
             rns.Add(typeof(Endereco).Name, rnsEndereco);
+
+            FormatoDAO forDAO = new FormatoDAO();
+            daos.Add(typeof(Formato).Name, forDAO);
+            List<IStrategy> rnsSalvarFormato = new List<IStrategy>()
+            {
+            };
+            List<IStrategy> rnsAlterarFormato = new List<IStrategy>()
+            {
+            };
+            List<IStrategy> rnsExcluirFormato = new List<IStrategy>
+            {
+                para_ex
+            };
+            List<IStrategy> rnsConsultarFormato = new List<IStrategy>()
+            {
+            };
+            Dictionary<string, List<IStrategy>> rnsFormato = new Dictionary<string, List<IStrategy>>
+            {
+                { "SALVAR", rnsSalvarEndereco },
+                { "ALTERAR", rnsAlterarEndereco },
+                { "EXCLUIR", rnsExcluirEndereco },
+                { "CONSULTAR", rnsConsultarEndereco }
+            };
+            rns.Add(typeof(Formato).Name, rnsFormato);
         }
         private static readonly Fachada Instance = new Fachada();
 
@@ -284,30 +313,6 @@ namespace Core.Controle
 
         }
     }
-    public override void Excluir(EntidadeDominio entidade)
-    {
-        connection.Open();
-        try
-        {
-
-            pst.CommandText = "DELETE FROM " + table + " WHERE " + id_table + "=" + entidade.ID.ToString();
-            pst.Connection = connection;
-            pst.CommandType = CommandType.Text;
-            pst.ExecuteNonQuery();
-            pst.CommandText = "commit work";
-            pst.ExecuteNonQuery();
-            if (ctrlTransaction)
-                connection.Close();
-
-
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-
-    }
-    
 
 }
 

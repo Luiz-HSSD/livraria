@@ -12,6 +12,13 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <style type="text/css">
+            #yeah{
+                position: absolute;
+                bottom: 0;
+            }
+        </style>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -63,11 +70,16 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Meu aplicativo ASP.NET</p>
-            </footer>
+            <br />
+            <br />
+            <br />
+            
         </div>
-
+        <div class="footer" id="yeah">
+                <footer  >
+                    <p>&copy; <%: DateTime.Now.Year %> - Meu aplicativo ASP.NET</p>
+                </footer>
+           </div>
     </form>
 </body>
 </html>

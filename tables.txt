@@ -1,29 +1,52 @@
-/*
+--/*
+drop TRIGGER set_form;
+drop TRIGGER set_liv;
+drop TRIGGER set_cat;
+drop TRIGGER set_sub_cat;
+drop TRIGGER set_aut;
 drop SEQUENCE liv;
 drop SEQUENCE cat;
 drop SEQUENCE liv_cat;
 drop SEQUENCE sub_cat;
+drop SEQUENCE aut;
+drop SEQUENCE format;
+drop table livro_autor;
+drop table autor;
 drop table sub_cat_livro;
 drop table livro;
 drop table sub_categoria;
 drop table categoria;
-*/
-CREATE SEQUENCE aa START WITH 1;
-CREATE SEQUENCE aa START WITH 1;
-CREATE SEQUENCE aa START WITH 1;
-CREATE SEQUENCE aa START WITH 1;
+DROP TABLE  formato;
+--*/
+CREATE SEQUENCE liv START WITH 1;
+CREATE SEQUENCE cat START WITH 1;
+CREATE SEQUENCE liv_cat START WITH 1;
+CREATE SEQUENCE sub_cat START WITH 1;
+CREATE SEQUENCE aut START WITH 1;
+CREATE SEQUENCE format START WITH 1;
 
+CREATE TABLE  formato 
+(
+   id_for        NUMBER(10) PRIMARY KEY ,
+   cod_formato   NUMBER(4),
+   dimensoes     varchar2(30),
+   peso          varchar2(15),
+   comprimento   decimal,
+   altura        decimal,
+   largura       decimal,
+   diametro      decimal
+);
 create table categoria(
     cat_id Number(13) PRIMARY KEY,
-    ativo char(1),
+    ativo_cat char(1),
     nome varchar(60)
 );
 create table sub_categoria(
     sub_cat_id Number(13) PRIMARY KEY,
-    ativo char(1),
-    nome varchar(60),
+    ativo_sub_cat  char(1),
+    nome_sub_cat varchar(60),
     cat_id Number(13),
-    CONSTRAINT fk_cat FOREIGN KEY (cat_id) REFERENCES categoria(cat_id)  
+    CONSTRAINT fk_categ FOREIGN KEY (cat_id) REFERENCES categoria(cat_id)  
     
 );  
 
@@ -32,14 +55,77 @@ create table livro(
     ativo char(1),
     nome varchar2(60),
     n_pags NUMBER(5),
+    ano NUMBER(5),
     isbn char(10),
-    descrição text
+    editora varchar2(60),
+    descricao  VARCHAR2(3000),
+    id_for  NUMBER(10),
+    CONSTRAINT fk_form FOREIGN KEY (id_for) REFERENCES formato(id_for)
 );
 create table sub_cat_livro(
     livro_id Number(13) ,
     sub_cat_id Number(13),
     ativo char(1),
     n_pags NUMBER(5),
-    CONSTRAINT fk_liv FOREIGN KEY (livro_id) REFERENCES livro(livro_id),
-    CONSTRAINT fk_liv FOREIGN KEY (sub_cat_id) REFERENCES livro(sub_categoria)
+    CONSTRAINT fk_livr FOREIGN KEY (livro_id) REFERENCES livro(livro_id),
+    CONSTRAINT fk_livro FOREIGN KEY (sub_cat_id) REFERENCES sub_categoria(sub_cat_id)
 );
+create table autor(
+    autor_id Number(13) PRIMARY KEY,
+    ativo_aut char(1),
+    nome_aut varchar(60)
+    
+);
+create table livro_autor(
+    livro_id Number(13) ,
+    autor_id Number(13),
+    ativo char(1),
+    n_pags NUMBER(5),
+    CONSTRAINT fk_livro_autor FOREIGN KEY (livro_id) REFERENCES livro(livro_id),
+    CONSTRAINT fk_autor_livro FOREIGN KEY (autor_id) REFERENCES autor(autor_id)
+);
+CREATE OR REPLACE TRIGGER set_liv
+BEFORE INSERT ON livro 
+FOR EACH ROW
+BEGIN
+  SELECT liv.NEXTVAL
+  INTO   :new.livro_id
+  FROM   dual;
+END set_liv;
+/
+CREATE OR REPLACE TRIGGER set_cat
+BEFORE INSERT ON categoria 
+FOR EACH ROW
+BEGIN
+  SELECT cat.NEXTVAL
+  INTO   :new.cat_id
+  FROM   dual;
+END set_cat;
+/
+CREATE OR REPLACE TRIGGER set_sub_cat
+BEFORE INSERT ON sub_categoria 
+FOR EACH ROW
+BEGIN
+  SELECT sub_cat.NEXTVAL
+  INTO   :new.sub_cat_id
+  FROM   dual;
+END set_sub_cat;
+/
+CREATE OR REPLACE TRIGGER set_aut
+BEFORE INSERT ON autor 
+FOR EACH ROW
+BEGIN
+  SELECT aut.NEXTVAL
+  INTO   :new.autor_id
+  FROM   dual;
+END set_aut;
+/
+CREATE OR REPLACE TRIGGER set_form
+BEFORE INSERT ON formato 
+FOR EACH ROW
+BEGIN
+  SELECT format.NEXTVAL
+  INTO   :new.id_for
+  FROM   dual;
+END set_for;
+/

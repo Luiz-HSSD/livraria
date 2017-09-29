@@ -11,88 +11,77 @@
                             $("#GridViewcat").DataTable();
                         });
                     </script>      
-    <table border="1" class="auto-style1">
-            <tr>
-                <td colspan="5">
-                    <h1>cadastro fornecedor</h1>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><b>Código: </b></td>
-                <td colspan="3">
-                           <asp:Label  ID="txtcod" runat="server"></asp:Label>
-                    </td>
-            </tr>
-            <tr>
-                <td colspan="2">Nome: </td>
-                <td colspan="3">
-                    <asp:TextBox TextMode="SingleLine" ID="txtnome" runat="server"></asp:TextBox></td>
-            </tr>
-            <tr>
-                <td colspan="2">CNPJ: </td>
-                <td colspan="3">
-                            <asp:TextBox TextMode="SingleLine" MaxLength="18" ID="txtcnpj" runat="server"></asp:TextBox>
-                    </td>
-            </tr>
-                <tr>
-                    <td><b>cep:</b></td>
-                    <td>
-                        <asp:TextBox TextMode="SingleLine" ID="cep" MaxLength="9" AutoPostBack="true" OnTextChanged="Cep_TextChanged"  runat="server"></asp:TextBox>
+    <table border="1">
+    <tr><td colspan="5"><h1>cadastro de livros</h1></td></tr>
+    <tr><td colspan="2"><b>código</b></td> <td colspan="3"><asp:Label  ID="codigo" runat="server"></asp:Label></td></tr>
+    <tr><td colspan="2">nome resumido:</td> <td colspan="3"><asp:TextBox MaxLength="50" TextMode="SingleLine" ID="nome" runat="server"></asp:TextBox></td></tr>
+    <tr><td colspan="2">descrição:</td> <td colspan="3"><asp:TextBox MaxLength="1000" TextMode="MultiLine" ID="descricao" runat="server"></asp:TextBox></td></tr>
+    <tr><td colspan="2">categoria:</td> <td colspan="3"><asp:TextBox MaxLength="1000" TextMode="SingleLine" ID="sub_categoria" runat="server"></asp:TextBox></td></tr>
+    <tr><td colspan="2"><b>ISBN: </b></td> <td colspan="3"><asp:TextBox MaxLength="13" ID="codigo_de_barra" runat="server"></asp:TextBox></td></tr>
+    <tr><td colspan="2">:</td> <td colspan="3"><asp:TextBox MaxLength="60"  TextMode="SingleLine" ID="fabricante" runat="server"></asp:TextBox></td></tr>
+    <tr><td colspan="2"><b aria-dropeffect="none">preço: </b></td> <td colspan="3"><asp:TextBox MaxLength="8" ID="preco" runat="server"></asp:TextBox></td></tr>
+    <tr><td colspan="2"><b aria-dropeffect="none">peso: </b></td> <td colspan="3"><asp:TextBox MaxLength="8" ID="peso" runat="server"></asp:TextBox></td></tr>
+<tr><td colspan="2"><b aria-dropeffect="none">dimensoes: </b></td> <td colspan="3"><asp:TextBox MaxLength="100" ID="dimensoes" runat="server"></asp:TextBox></td></tr>     
+    <tr><td colspan="2"><b>imagem </b></td> <td colspan="3"><asp:FileUpload  ID="foto" AllowMultiple="false"  runat="server" Font-Names="pega"></asp:FileUpload></td><td><asp:Button ID="subir" runat="server" Text="Button" OnClick="subir_Click" /></td></tr>
+    
+    <tr><td colspan="3">    
+        <asp:Label ID="lblStatus" style="color: Red;" text="&nbsp;" runat="server" />
 
-                    </td>
-                
-                </tr>
-                <tr>
-                    <td><b>rua:</b></td> <td>
-                        <asp:TextBox TextMode="SingleLine" ID="logradouro" runat="server"></asp:TextBox></td>
-                    <td><b>Numero:</b></td> <td>
-                        <asp:TextBox TextMode="Number" ID="numero" runat="server"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td><b>bairro:</b></td>
-                    <td>                    
-                        <asp:TextBox TextMode="SingleLine" ID="bairro" runat="server"></asp:TextBox></td>
-                    <td><b>complemento:</b></td>
-                    <td>                    
-                        <asp:TextBox TextMode="SingleLine" ID="complemento" runat="server"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td><b>cidade:</b></td>
-                    <td>
-                        <asp:TextBox TextMode="SingleLine" ID="cidade" runat="server"></asp:TextBox></td>
-                    <td><b>UF:</b></td>
-                    <td>
-                        <asp:DropDownList ID="DropDownListcliuf" runat="server" DataTextField="uf" DataValueField="id">
-                        </asp:DropDownList></td>
-                </tr>
-            <tr>
-                <td class="auto-style2">
-                    <asp:Button runat="server" Text="novo" id="novo_for" OnClick="Novo_for_Click"  />
-                </td>
-                <td class="auto-style3">
-                    <asp:Button runat="server" Text="alterar" id="alterar_for" OnClick="Alterar_for_Click"  />
-                </td>
-                <td class="auto-style4">
-                   <asp:Button runat="server" Text="cancelar" id="cancelar_for" OnClick="Cancelar_for_Click" />
-                </td>
-            </tr>
-        </table>
-                <asp:Label ID="LabelErro" runat="server" BackColor="Red" Font-Size="Medium"></asp:Label>
-                <br />
-          <div id="divTable" runat="server" style="padding:30px; width: 998px; height: 1px;">
-          <table class="auto-style19">
-              <tr>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
-                  <td>&nbsp;</td>
-              </tr>
-              <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-              </tr>
-          </table>
-          </div>
-          <asp:GridView runat="server" CssClass="display" ID="GridViewcat" EnableModelValidation="True" Width="204px" >
-      <HeaderStyle Font-Bold="true" />
-                        </asp:GridView >
-                    <br />
+    <br /><br />
+    <asp:Button ID="btnDelete" Text="Delete" runat="server" onclick="btnDelete_Click" /><br /><br />
+
+        <asp:Repeater ID="rptrUserPhotos" runat="server">
+        <ItemTemplate>
+            <span class="saucer" style="float: left; padding: 15px; ">
+
+            <a rel="example_group" href="<%# Container.DataItem %>" title="">
+            <asp:ImageButton  ImageUrl="<%# Container.DataItem %>" ID="imgUserPhoto" style="width: 100px; height: 100px;" runat="server" /><br />
+            </a>
+            
+            <asp:CheckBox special="<%# Container.DataItem %>" ID="cbDelete" Text="Delete" runat="server" /><br />
+            </span>
+        </ItemTemplate>
+    </asp:Repeater>
+
+        </td></tr>
+    </table>
+
+    <table>
+    <tr>
+    
+            <td>
+                <asp:Button runat="server" Text="novo" id="novo_pro" OnClick="novo_pro_Click" />
+            </td>
+            <td>
+                <asp:Button runat="server" Text="alterar" id="alterar_pro" OnClick="alterar_pro_Click" />
+            </td>
+            <td>
+               <asp:Button runat="server" Text="cancelar" id="cancelar_pro" OnClick="cancelar_pro_Click" />
+            </td>
+
+    </tr>
+    <tr>
+        <td colspan="3">
+        <asp:Label ID="msg" runat="server" />    
+        </td>
+    </tr>
+    </table>
+            <br />
+          
+      <table class="auto-style19">
+          <tr>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
+              <td>&nbsp;</td>
+          </tr>
+          <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+          </tr>
+      </table>
+    <div id="divTable" runat="server" style="padding:30px; width: 998px; height: 1px;">
+              <asp:GridView runat="server" CssClass="display" ID="GridViewpro" EnableModelValidation="True" Width="204px" >
+
+                    </asp:GridView><br />
+        
+      </div>
 </asp:Content>

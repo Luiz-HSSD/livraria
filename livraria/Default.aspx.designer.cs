@@ -13,130 +13,166 @@ namespace livraria {
     public partial class _Default {
         
         /// <summary>
-        /// Controle txtcod.
+        /// Controle codigo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtcod;
+        protected global::System.Web.UI.WebControls.Label codigo;
         
         /// <summary>
-        /// Controle txtnome.
+        /// Controle nome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtnome;
+        protected global::System.Web.UI.WebControls.TextBox nome;
         
         /// <summary>
-        /// Controle txtcnpj.
+        /// Controle descricao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcnpj;
+        protected global::System.Web.UI.WebControls.TextBox descricao;
         
         /// <summary>
-        /// Controle cep.
+        /// Controle sub_categoria.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cep;
+        protected global::System.Web.UI.WebControls.TextBox sub_categoria;
         
         /// <summary>
-        /// Controle logradouro.
+        /// Controle codigo_de_barra.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox logradouro;
+        protected global::System.Web.UI.WebControls.TextBox codigo_de_barra;
         
         /// <summary>
-        /// Controle numero.
+        /// Controle fabricante.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numero;
+        protected global::System.Web.UI.WebControls.TextBox fabricante;
         
         /// <summary>
-        /// Controle bairro.
+        /// Controle preco.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox bairro;
+        protected global::System.Web.UI.WebControls.TextBox preco;
         
         /// <summary>
-        /// Controle complemento.
+        /// Controle peso.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox complemento;
+        protected global::System.Web.UI.WebControls.TextBox peso;
         
         /// <summary>
-        /// Controle cidade.
+        /// Controle dimensoes.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cidade;
+        protected global::System.Web.UI.WebControls.TextBox dimensoes;
         
         /// <summary>
-        /// Controle DropDownListcliuf.
+        /// Controle foto.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListcliuf;
+        protected global::System.Web.UI.WebControls.FileUpload foto;
         
         /// <summary>
-        /// Controle novo_for.
+        /// Controle subir.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button novo_for;
+        protected global::System.Web.UI.WebControls.Button subir;
         
         /// <summary>
-        /// Controle alterar_for.
+        /// Controle lblStatus.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button alterar_for;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
-        /// Controle cancelar_for.
+        /// Controle btnDelete.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancelar_for;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
-        /// Controle LabelErro.
+        /// Controle rptrUserPhotos.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelErro;
+        protected global::System.Web.UI.WebControls.Repeater rptrUserPhotos;
+        
+        /// <summary>
+        /// Controle novo_pro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button novo_pro;
+        
+        /// <summary>
+        /// Controle alterar_pro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button alterar_pro;
+        
+        /// <summary>
+        /// Controle cancelar_pro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelar_pro;
+        
+        /// <summary>
+        /// Controle msg.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msg;
         
         /// <summary>
         /// Controle divTable.
@@ -148,12 +184,12 @@ namespace livraria {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTable;
         
         /// <summary>
-        /// Controle GridViewcat.
+        /// Controle GridViewpro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewcat;
+        protected global::System.Web.UI.WebControls.GridView GridViewpro;
     }
 }

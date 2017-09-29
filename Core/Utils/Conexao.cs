@@ -11,7 +11,7 @@ namespace Core.Utils
     {
         static string conx = "Data Source=(DESCRIPTION =  (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = XE))); User Id=lesbd;Password=123;";
 
-        public static OracleConnection getConnection ()
+        public static OracleConnection GetConnection ()
         {
             OracleConnection go = new OracleConnection(conx);
             return go; 
