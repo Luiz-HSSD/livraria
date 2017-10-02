@@ -16,7 +16,14 @@ drop table sub_cat_livro;
 drop table livro;
 drop table sub_categoria;
 drop table categoria;
-DROP TABLE  formato;
+DROP TABLE formato;
+drop table his_livro_autor;
+drop table his_autor;
+drop table his_sub_cat_livro;
+drop table his_livro;
+drop table his_sub_categoria;
+drop table his_categoria;
+DROP TABLE his_formato;
 --*/
 CREATE SEQUENCE liv START WITH 1;
 CREATE SEQUENCE cat START WITH 1;
@@ -83,6 +90,71 @@ create table livro_autor(
     n_pags NUMBER(5),
     CONSTRAINT fk_livro_autor FOREIGN KEY (livro_id) REFERENCES livro(livro_id),
     CONSTRAINT fk_autor_livro FOREIGN KEY (autor_id) REFERENCES autor(autor_id)
+);
+CREATE TABLE  his_formato 
+(
+   id_for        NUMBER(10) PRIMARY KEY ,
+   cod_formato   NUMBER(4),
+   dimensoes     varchar2(30),
+   peso          varchar2(15),
+   comprimento   decimal,
+   altura        decimal,
+   largura       decimal,
+   diametro      decimal,
+   dt_op DATE,
+   op char(1)
+);
+create table his_categoria(
+    cat_id Number(13) PRIMARY KEY,
+    ativo_cat char(1),
+    nome varchar(60),
+    dt_op DATE,
+    op char(1)
+);
+create table his_sub_categoria(
+    sub_cat_id Number(13) PRIMARY KEY,
+    ativo_sub_cat  char(1),
+    nome_sub_cat varchar(60),
+    cat_id Number(13),
+    dt_op DATE,
+    op char(1)    
+);  
+
+create table his_livro(
+    livro_id Number(13) PRIMARY KEY,
+    ativo char(1),
+    nome varchar2(60),
+    n_pags NUMBER(5),
+    ano NUMBER(5),
+    isbn char(10),
+    editora varchar2(60),
+    descricao  VARCHAR2(3000),
+    id_for  NUMBER(10),
+    dt_op DATE,
+    op char(1)
+);
+create table his_sub_cat_livro(
+    livro_id Number(13) ,
+    sub_cat_id Number(13),
+    ativo char(1),
+    n_pags NUMBER(5),
+    dt_op DATE,
+    op char(1)
+    );
+create table his_autor(
+    autor_id Number(13) PRIMARY KEY,
+    ativo_aut char(1),
+    nome_aut varchar(60),
+    dt_op DATE,
+    op char(1)    
+);
+create table his_livro_autor(
+    livro_id Number(13) ,
+    autor_id Number(13),
+    ativo char(1),
+    n_pags NUMBER(5),
+    dt_op DATE,
+    op char(1)
 );
 CREATE OR REPLACE TRIGGER set_liv
 BEFORE INSERT ON livro 

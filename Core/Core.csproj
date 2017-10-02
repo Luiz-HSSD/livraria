@@ -69,12 +69,14 @@
     <Compile Include="DAO\AutorDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\FormatoDAO.cs" />
-    <Compile Include="DAO\FornecedorDAO.cs" />
+    <Compile Include="Controle\FornecedorDAO.cs" />
     <Compile Include="DAO\LivroDAO.cs" />
+    <Compile Include="DAO\SubCategoriaDAO.cs" />
     <Compile Include="Negocio\Abstract_Regra_de_Negocios.cs" />
     <Compile Include="Negocio\Controle_Autor.cs" />
     <Compile Include="Negocio\Controle_Formato.cs" />
     <Compile Include="Negocio\parametro_excluir.cs" />
+    <Compile Include="Negocio\Persistir_livro.cs" />
     <Compile Include="Negocio\ValidarCNPJ.cs" />
     <Compile Include="Negocio\Validar_Endereco.cs" />
     <Compile Include="Negocio\Validar_Livro.cs" />
